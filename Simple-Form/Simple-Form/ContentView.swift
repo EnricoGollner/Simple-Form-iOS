@@ -34,9 +34,6 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack{
-            ZStack{
-                
-            }
             Form{
                 Section(header: Text("Personal information")){
                     TextField("First Name", text: $name)
@@ -55,9 +52,12 @@ struct ContentView: View {
                     Link("Terms of Service", destination: URL(string: "https://enricogollner.netlify.app/")!)
                 }
             }
-            .accentColor(.red)
             .navigationTitle("Account")
             .toolbar{
+                ToolbarItemGroup(placement: .navigationBarTrailing){
+                    Button("Save", action: save)
+                }
+                
                 ToolbarItemGroup(placement: .keyboard){
                     Spacer()
                     Button("Done"){
@@ -66,6 +66,10 @@ struct ContentView: View {
                 }
             }
         }
+        .accentColor(.red)
+    }
+    func save(){
+        print("saved")
     }
 }
 
